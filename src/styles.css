@@ -1,1 +1,35 @@
 /* You can add global styles to this file, and also import other style files */
+.background{
+    background-color: #303535;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.ml20{
+    margin-left: 20px;
+}
+
+.mb5{
+    margin-bottom: 5px;
+}
+
+.mlb20{
+    margin-left: 20px;
+    margin-bottom: 20px; 
+}
+
+.clickable{
+    cursor: pointer;
+}
+
+.em020{
+    font-size: 2em;
+}
+
+.bright-green{
+    color: #00ca00;
+}
+
+.blue{
+    color: #0089ff;
+}
