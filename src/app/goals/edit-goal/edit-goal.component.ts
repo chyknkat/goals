@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-edit-goal',
+  selector: 'edit-goal',
   templateUrl: './edit-goal.component.html',
   styleUrls: ['./edit-goal.component.css']
 })
