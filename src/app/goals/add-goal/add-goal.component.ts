@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { AppState } from 'src/app/reducers';
+import { RedirectToAction } from 'src/app/reducers/app/app.actions';
 
 @Component({
   selector: 'add-goal',
@@ -7,9 +10,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddGoalComponent implements OnInit {
 
-  constructor() { }
+  constructor(private store: Store<AppState>) { }
 
   ngOnInit() {
   }
 
+  openGoals(){
+    this.store.dispatch(new RedirectToAction(''));
+  }
 }

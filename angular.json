@@ -115,6 +115,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "goals"
+    }
+  },
+  "defaultProject": "goals",
+  "cli": {
+    "defaultCollection": "@ngrx/schematics"
+  }
 }

@@ -13,6 +13,8 @@ import { GoalsModule } from './goals/goals.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatCardModule, MatIconModule, MatToolbarModule, MatButtonModule, MatFormFieldModule, MatInputModule } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { AppRoutingModule } from './app-routing.module';
+import { AppEffects } from './reducers/app/app.effects';
 
 @NgModule({
   declarations: [
@@ -23,6 +25,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     GoalsModule,
     StoreModule.forRoot(reducers, { metaReducers }),
     EffectsModule.forRoot([
+      AppEffects,
       GoalsEffects
     ]),
     HttpClientModule,
@@ -34,6 +37,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     MatFormFieldModule,
     MatInputModule,
     FlexLayoutModule,
+    AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase, 'Goals'),
         AngularFireDatabaseModule
   ],
