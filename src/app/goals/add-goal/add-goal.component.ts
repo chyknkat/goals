@@ -10,6 +10,9 @@ import { RedirectToAction } from 'src/app/reducers/app/app.actions';
 })
 export class AddGoalComponent implements OnInit {
 
+  pointsNumber: number;
+  pointsDescription: string;
+
   constructor(private store: Store<AppState>) { }
 
   ngOnInit() {
@@ -17,5 +20,9 @@ export class AddGoalComponent implements OnInit {
 
   openGoals(){
     this.store.dispatch(new RedirectToAction(''));
+  }
+
+  addGoal(){
+    
   }
 }

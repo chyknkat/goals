@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 import { StoreModule, Store } from '@ngrx/store';
 import { reducers, metaReducers } from './reducers';
 import { EffectsModule } from '@ngrx/effects';
@@ -11,10 +12,10 @@ import { GoalsEffects } from './reducers/goals/goals.effects';
 import { environment } from '../environments/environment';
 import { GoalsModule } from './goals/goals.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatCardModule, MatIconModule, MatToolbarModule, MatButtonModule, MatFormFieldModule, MatInputModule } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { AppRoutingModule } from './app-routing.module';
 import { AppEffects } from './reducers/app/app.effects';
+import { MaterialModule } from './material.module';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { AppEffects } from './reducers/app/app.effects';
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     GoalsModule,
     StoreModule.forRoot(reducers, { metaReducers }),
     EffectsModule.forRoot([
@@ -30,12 +32,7 @@ import { AppEffects } from './reducers/app/app.effects';
     ]),
     HttpClientModule,
     BrowserAnimationsModule,
-    MatCardModule,
-    MatIconModule,
-    MatToolbarModule,
-    MatButtonModule,
-    MatFormFieldModule,
-    MatInputModule,
+    MaterialModule,
     FlexLayoutModule,
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase, 'Goals'),

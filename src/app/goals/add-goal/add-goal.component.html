@@ -1,6 +1,20 @@
-<div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutAlign="center center">
-  <mat-icon class="clickable mb5 orange" (click)="openGoals()">arrow_back</mat-icon><h2 class="ml20 blue">ADD A GOAL</h2>
+<div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutAlign="center">
+  <mat-icon class="clickable mb5 orange mt083em" (click)="openGoals()">arrow_back</mat-icon>
+  <h2 fxLayoutAlign="center center" class="ml20 blue">ADD A GOAL</h2>
+  <mat-icon class="ml20 mb5 clickable em020 bright-green mt07em" fxLayoutAlign="space-around center" (click)=addGoal()>save</mat-icon>
 </div>
-<p>
-  add-goal works!
-</p>
+<ng-container>
+  
+      <mat-form-field fxLayoutAlign="center" floatLabel="always" >
+          <mat-label>Number of Points</mat-label>
+          <input matInput [(ngModel)]="pointsNumber" name="pointsNumber"  required [numberInput]="[0]">
+        </mat-form-field>
+  
+
+  <mat-form-field fxLayoutAlign="center" floatLabel="always" >
+    <mat-label>Description</mat-label>
+    <input matInput [(ngModel)]="pointsDescription" name="pointsDescription" required >
+  </mat-form-field>
+</ng-container>
+
+  

@@ -1,4 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
+@import "../node_modules/@angular/material/prebuilt-themes/pink-bluegrey.css";
+
 .background{
     background-color: #303535;
     color: white;
@@ -16,6 +18,14 @@
 .mlb20{
     margin-left: 20px;
     margin-bottom: 20px; 
+}
+
+.mt083em{
+    margin-top: 0.83em;
+}
+
+.mt07em{
+    margin-top: 0.7em;
 }
 
 .clickable{
