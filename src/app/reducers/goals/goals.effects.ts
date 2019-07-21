@@ -1,29 +1,33 @@
 import { Injectable } from '@angular/core';
-import { Actions, Effect } from '@ngrx/effects';
+import { Actions, Effect, ofType } from '@ngrx/effects';
 import * as GoalsActions from './goals.actions';
 import { GoalsActionTypes } from './goals.actions';
 import { GoalsService } from './goals.service';
+import { mergeMap, map, catchError } from 'rxjs/operators';
+import { ResultModel } from '../app/models/result-model.model';
+import { Goal } from './models/goal.model';
+import { of } from 'rxjs';
 
 @Injectable()
 export class GoalsEffects {
     constructor(private actions$: Actions, private goalsService: GoalsService) { }
 
-//   @Effect()
-//   generateBatch$ = this.actions$.ofType(BusinessTaxesActionTypes.GenerateBatchAction).pipe(
-//     mergeMap((action: TaxesActions.GenerateBatchAction) =>
-//       this.taxesService.generateBatch(action.batchRequest).pipe(
-//         map((response: ResultModel<string>) => {
-//           // SUCESS
-//           if (response.success) {
-//             this.sharedService.showMessages('SUCCESS', [`Batch generation for ${action.batchRequest.stateCode} has started.`]);
-//             return new TaxesActions.TaxesDefaultAction('GenerateBatchAction');
-//           }
-//             // FAIL
-//             return new TaxesActions.TaxesDefaultErrorAction(response.errors, 'GenerateBatchAction');
-//         }),
-//         catchError(() => of(new TaxesActions.TaxesDefaultErrorAction(
-//           ['Could not generate a new batch. Connection error.'], 'GenerateBatchAction')))
-//       )
-//     )
-//   );
+  @Effect()
+  addGoal$ = this.actions$.pipe(ofType(GoalsActionTypes.AddGoalAction),
+    mergeMap((action: GoalsActions.AddGoalAction) =>
+      this.goalsService.addGoal(action.goal).pipe(
+        map((response: ResultModel<Goal>) => {
+          // SUCESS
+          if (response.success) {
+            return new GoalsActions.AddGoalSuccessAction(response.data);
+          }
+            // FAIL
+            return new GoalsActions.GoalsDefaultErrorAction(response.errors, 'AddGoalAction');
+        }),
+        catchError(() => of(new GoalsActions.GoalsDefaultErrorAction(
+          ['Could not add goal. Connection error.'], 'AddGoalAction')))
+      )
+    )
+  );
+
 }

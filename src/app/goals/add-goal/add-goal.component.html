@@ -5,16 +5,18 @@
 </div>
 <ng-container>
   
-      <mat-form-field fxLayoutAlign="center" floatLabel="always" >
-          <mat-label>Number of Points</mat-label>
-          <input matInput [(ngModel)]="pointsNumber" name="pointsNumber"  required [numberInput]="[0]">
-        </mat-form-field>
+  <mat-form-field fxLayoutAlign="center" floatLabel="always" >
+    <mat-label>Number of Points</mat-label>
+    <input matInput [(ngModel)]="goal.numberOfPoints" name="pointsNumber"  required [numberInput]="[0]">
+  </mat-form-field>
   
 
   <mat-form-field fxLayoutAlign="center" floatLabel="always" >
     <mat-label>Description</mat-label>
-    <input matInput [(ngModel)]="pointsDescription" name="pointsDescription" required >
+    <input matInput [(ngModel)]="goal.description" name="pointsDescription" required >
   </mat-form-field>
+
+  <p fxLayoutAlign="center" class="red">{{error}}</p>
 </ng-container>
 
   
