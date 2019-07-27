@@ -30,4 +30,22 @@ export class GoalsEffects {
     )
   );
 
+  @Effect()
+  deleteGoal$ = this.actions$.pipe(ofType(GoalsActionTypes.DeleteGoalAction),
+    mergeMap((action: GoalsActions.DeleteGoalAction) =>
+      this.goalsService.deleteGoal(action.goal).pipe(
+        map((response: ResultModel<Goal>) => {
+          // SUCESS
+          if (response.success) {
+            return new GoalsActions.DeleteGoalSuccessAction(response.data);
+          }
+            // FAIL
+            return new GoalsActions.GoalsDefaultErrorAction(response.errors, 'DeleteGoalAction');
+        }),
+        catchError(() => of(new GoalsActions.GoalsDefaultErrorAction(
+          ['Could not delete goal. Connection error.'], 'DeleteGoalAction')))
+      )
+    )
+  );
+
 }

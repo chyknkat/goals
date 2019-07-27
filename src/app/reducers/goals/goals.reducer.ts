@@ -16,6 +16,7 @@ export const initialState: State = {
 export function reducer(state = initialState, action: GoalsActions): State {
     switch (action.type) {
         case GoalsActionTypes.AddGoalAction:
+        case GoalsActionTypes.DeleteGoalAction:
             return {...state, goal: action.goal};
 
         case GoalsActionTypes.AddGoalSuccessAction:
@@ -27,6 +28,16 @@ export function reducer(state = initialState, action: GoalsActions): State {
                 goals.push(action.goal);
             }
             return {...state, goals: goals};
+
+        case GoalsActionTypes.DeleteGoalSuccessAction:
+            let goalsWithDeleted = [];
+            goalsWithDeleted.push(state.goals);
+            //var goalToDelete = state.goals.find(x => x.id === action.goal.id)[0];
+            let goalToDelete = state.goals.find(x => x.description.toLowerCase() === action.goal.description.toLowerCase());
+            const i = state.goals.indexOf(goalToDelete);
+            goalsWithDeleted.splice(i, 1, new Goal(action.goal));
+            return {...state, goals: goalsWithDeleted};
+
         default: return state;
     }
 }

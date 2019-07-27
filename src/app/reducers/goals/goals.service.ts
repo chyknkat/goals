@@ -21,5 +21,16 @@ export class GoalsService {
         //       return new ResultModel<BassUser[]>(response.success, users, response.errors);
         //     })
         //   );
+    }
+
+    deleteGoal(goal: Goal): Observable<ResultModel<Goal>> {
+      goal.isDeleted = true;
+          return of(new ResultModel<Goal>(true, goal, null));
+          // return this.http.get(this.url + `api/auth/GetAllUsers`, this.authService.getAuthHttpOptions())
+          //   .pipe(map((response: ResultModel<any>) => {
+          //       const users = response.data.map(x => new BassUser(x));
+          //       return new ResultModel<BassUser[]>(response.success, users, response.errors);
+          //     })
+          //   );
       }
 }
