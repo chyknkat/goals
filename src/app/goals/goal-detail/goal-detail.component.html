@@ -1,3 +1,16 @@
-<p>
-  goal-detail works!
-</p>
+
+
+<div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutAlign="center center" *ngIf="goal?.isDeleted === false">
+  <div fxFlex="22">{{goal.numberOfPoints}} Points</div> 
+  <div fxFlex="22"> - {{goal.description}}</div>
+  <div fxFlex="10">
+    <mat-icon class="ml5 mb5 clickable em015" fxLayoutAlign="space-around center" (click)=edit()>edit</mat-icon>
+  </div>
+  <div fxFlex="10">
+    <mat-icon class="ml5 mb5 clickable em015" fxLayoutAlign="space-around center" (click)=delete()>delete_forever</mat-icon>
+  </div>
+  </div>
+<div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutAlign="center center" *ngIf="goal?.isDeleted === true">
+  Deleted - {{goal.description}}
+  <mat-icon class="ml5 mb5 clickable em015" fxLayoutAlign="space-around center" (click)=undoDelete()>undo</mat-icon>
+</div>

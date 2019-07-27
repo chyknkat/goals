@@ -13,6 +13,7 @@ export class GoalsService {
     constructor(private http: HttpClient) { }
 
     addGoal(goal: Goal): Observable<ResultModel<Goal>> {
+      goal.isDeleted = false;
         return of(new ResultModel<Goal>(true, goal, null));
         // return this.http.get(this.url + `api/auth/GetAllUsers`, this.authService.getAuthHttpOptions())
         //   .pipe(map((response: ResultModel<any>) => {
