@@ -36,6 +36,14 @@
     cursor: pointer;
 }
 
+.capitalize{
+    text-transform: capitalize;
+}
+
+.uppercase{
+    text-transform: uppercase;
+}
+
 .em020{
     font-size: 2em;
 }

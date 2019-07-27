@@ -1,16 +1,33 @@
+<div *ngIf="goals && goals.length > 0">
+
+<table mat-table [dataSource]="dataSource" matSort class="mb5">
+    <ng-container matColumnDef="Points">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Points</th>
+        <td mat-cell *matCellDef="let element">{{element.numberOfPoints}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="Description">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Description</th>
+        <td mat-cell *matCellDef="let element" class="uppercase">{{element.description}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="Actions">
+        <th mat-header-cell *matHeaderCellDef></th>
+        <td mat-cell *matCellDef="let element">
+            <span fxLayoutAlign="end center" >
+                <mat-icon (click)="edit(element)" class="ml20 mb5 clickable em015" matTooltip="Edit Goal">edit</mat-icon>
+                <mat-icon (click)="delete(element)" class="mb5 clickable em015" matTooltip="Delete Goal">delete_forever</mat-icon>
+            </span>
+        </td>
+      </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 
 
-<div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutAlign="center center" *ngIf="goal?.isDeleted === false">
-  <div fxFlex="22">{{goal.numberOfPoints}} Points</div> 
-  <div fxFlex="22"> - {{goal.description}}</div>
-  <div fxFlex="10">
-    <mat-icon class="ml5 mb5 clickable em015" fxLayoutAlign="space-around center" (click)=edit()>edit</mat-icon>
-  </div>
-  <div fxFlex="10">
-    <mat-icon class="ml5 mb5 clickable em015" fxLayoutAlign="space-around center" (click)=delete()>delete_forever</mat-icon>
-  </div>
-  </div>
-<div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutAlign="center center" *ngIf="goal?.isDeleted === true">
-  Deleted - {{goal.description}}
-  <mat-icon class="ml5 mb5 clickable em015" fxLayoutAlign="space-around center" (click)=undoDelete()>undo</mat-icon>
+</table>
+
+<div fxLayout="row" fxLayoutAlign="center center">
+    <button mat-stroked-button>Show Deleted</button>
+</div>
 </div>
